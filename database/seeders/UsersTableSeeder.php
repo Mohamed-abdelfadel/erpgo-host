@@ -3665,9 +3665,9 @@ class UsersTableSeeder extends Seeder
 
         $company = User::create(
             [
-                'name' => 'mohamed',
-                'email' => 'mohamed@gmail.com',
-                'password' => Hash::make('mohamed321go'),
+                'name' => 'gorgov',
+                'email' => 'gorgov@example.com',
+                'password' => Hash::make('1234'),
                 'type' => 'company',
                 'default_pipeline' => 1,
                 'plan' => 1,

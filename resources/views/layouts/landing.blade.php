@@ -21,7 +21,7 @@
 
 
 @endphp
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en" dir="{{$setting['SITE_RTL'] == 'on'?'rtl':''}}">
 <head>
 
@@ -51,20 +51,20 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!-- Meta -->
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"
     />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Dashboard Template Description" />
-    <meta name="keywords" content="Dashboard Template" />
-    <meta name="author" content="Rajodiya Infotech" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Dashboard Template Description"/>
+    <meta name="keywords" content="Dashboard Template"/>
+    <meta name="author" content="Rajodiya Infotech"/>
 
     <!-- Favicon icon -->
-    <link rel="icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon" />
+    <link rel="icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon"/>
 
-    <link rel="stylesheet" href="{{asset('assets/css/plugins/animate.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/animate.min.css')}}"/>
     <!-- font css -->
     <link rel="stylesheet" href="{{asset('assets/fonts/tabler-icons.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/fonts/feather.css')}}">
@@ -82,7 +82,7 @@
     @endif
     <link rel="stylesheet" href="{{asset('assets/css/customizer.css')}}">
 
-    <link rel="stylesheet" href="{{asset('assets/css/landing.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/landing.css')}}"/>
 </head>
 
 <body class="{{$color}}">
@@ -91,7 +91,7 @@
     <div class="container">
         <a class="navbar-brand bg-transparent" href="">
 
-                <img src="{{ $logo .'/logo-light.png' }}" alt="logo" width="40%"/>
+            <img src="{{ asset('public/logos/gorgov-light.png') }}" alt="gorgov-logo" width="7%"/>
 
         </a>
         <button
@@ -107,24 +107,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul class="navbar-nav align-items-center ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#features">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#layouts">Layouts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#testimonial">Testimonial</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#pricing">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#faq">Faq</a>
-                </li>
+                {{--                <li class="nav-item">--}}
+                {{--                    <a class="nav-link active" href="#home">Home</a>--}}
+                {{--                </li>--}}
+                {{--                <li class="nav-item">--}}
+                {{--                    <a class="nav-link" href="#features">Features</a>--}}
+                {{--                </li>--}}
+                {{--                <li class="nav-item">--}}
+                {{--                    <a class="nav-link" href="#layouts">Layouts</a>--}}
+                {{--                </li>--}}
+                {{--                <li class="nav-item">--}}
+                {{--                    <a class="nav-link" href="#testimonial">Testimonial</a>--}}
+                {{--                </li>--}}
+                {{--                <li class="nav-item">--}}
+                {{--                    <a class="nav-link" href="#pricing">Pricing</a>--}}
+                {{--                </li>--}}
+                {{--                <li class="nav-item">--}}
+                {{--                    <a class="nav-link" href="#faq">Faq</a>--}}
+                {{--                </li>--}}
                 <li class="nav-item">
                     <a class="btn btn-light ms-2 me-1" href="{{ route('login') }}">{{__('Login')}}</a>
                 </li>
@@ -147,7 +147,7 @@
                     class="text-white mb-sm-4 wow animate__fadeInLeft"
                     data-wow-delay="0.2s"
                 >
-                    {{__('ERPGo SaaS')}}
+                    {{__('GORGOV ERP')}}
                 </h1>
                 <h2
                     class="text-white mb-sm-4 wow animate__fadeInLeft"
@@ -155,25 +155,25 @@
                 >
                     {{__('All In One Business ERP With Project, Account, HRM, CRM')}}
                 </h2>
-                <p class="mb-sm-4 wow animate__fadeInLeft" data-wow-delay="0.6s">
-                    Use these awesome forms to login or create new account in your
-                    project for free.
-                </p>
+                {{--                <p class="mb-sm-4 wow animate__fadeInLeft" data-wow-delay="0.6s">--}}
+                {{--                    Use these awesome forms to login or create new account in your--}}
+                {{--                    project for free.--}}
+                {{--                </p>--}}
                 <div class="my-4 wow animate__fadeInLeft" data-wow-delay="0.8s">
-                    <a href="{{ route('login') }}" class="btn btn-light me-2"
-                    ><i class="far fa-eye me-2"></i>Live Demo</a
+                    <a href=" https://www.gorgov.com/ " class="btn btn-light me-2"
+                    ><i class="far fa-eye me-2"></i>Contact</a
                     >
-                    <a href="https://codecanyon.net/item/erpgo-saas-all-in-one-business-erp-with-project-account-hrm-crm/33263426" class="btn btn-outline-light" target="_blank"
-                    ><i class="fas fa-shopping-cart me-2"></i>Buy now</a
-                    >
+                    {{--                    <a href="https://codecanyon.net/item/erpgo-saas-all-in-one-business-erp-with-project-account-hrm-crm/33263426" class="btn btn-outline-light" target="_blank"--}}
+                    {{--                    ><i class="fas fa-shopping-cart me-2"></i>Buy now</a--}}
+                    {{--                    >--}}
                 </div>
             </div>
             <div class="col-sm-5">
                 <img
-                    src="{{asset('assets/images/front/header-mokeup.svg')}}"
-                    alt="Datta Able Admin Template"
-                    class="img-fluid header-img wow animate__fadeInRight"
-                    data-wow-delay="0.2s"
+                    src="{{asset('public/images/gorgov-1.jpg')}}"
+                    alt="Gorgov Cover"
+                    class="img-fluid header-img wow animate__fadeInRight rounded"
+                    data-wow-delay="0.4s"
                 />
             </div>
         </div>
@@ -185,85 +185,89 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-6 col-md-9 title">
-                <h2><span>Happy clients use Dashboard</span> </h2>
+                <h2><span>clients use gorgov</span></h2>
             </div>
         </div>
-        <div class="row align-items-center justify-content-center mobile-screen dashboard_images">
-            <div class="col-lg-2">
-                <div class="wow animate__fadeInRight mobile-widget" data-wow-delay="0.2s">
+        {{--        <div class="row align-items-center justify-content-center mobile-screen dashboard_images">--}}
+        {{--            <div class="col-lg-2">--}}
+        {{--                <div class="wow animate__fadeInRight mobile-widget  " data-wow-delay="0.2s">--}}
 
-                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )
+        {{--                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )--}}
 
-                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"
-                             alt="" class="img-fluid ">
-                    @else
+        {{--                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"--}}
+        {{--                             alt="" class="img-fluid ">--}}
+        {{--                    @else--}}
 
-                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"
-                             alt="" class="img-fluid">
-                    @endif
+        {{--                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"--}}
+        {{--                             alt="" class="img-fluid">--}}
+        {{--                    @endif--}}
 
 
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="wow animate__fadeInRight mobile-widget" data-wow-delay="0.4s">
-                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--            <div class="col-lg-2">--}}
+        {{--                <div class="wow animate__fadeInRight mobile-widget" data-wow-delay="0.4s">--}}
+        {{--                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )--}}
 
-                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"
-                             alt="" class="img-fluid ">
-                    @else
+        {{--                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"--}}
+        {{--                             alt="" class="img-fluid ">--}}
+        {{--                    @else--}}
 
-                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"
-                             alt="" class="img-fluid">
-                    @endif
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="wow animate__fadeInRight mobile-widget" data-wow-delay="0.6s">
-                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )
+        {{--                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"--}}
+        {{--                             alt="" class="img-fluid">--}}
+        {{--                    @endif--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--            <div class="col-lg-2">--}}
+        {{--                <div class="wow animate__fadeInRight mobile-widget" data-wow-delay="0.6s">--}}
+        {{--                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )--}}
 
-                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"
-                             alt="" class="img-fluid ">
-                    @else
+        {{--                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"--}}
+        {{--                             alt="" class="img-fluid ">--}}
+        {{--                    @else--}}
 
-                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"
-                             alt="" class="img-fluid">
-                    @endif
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="wow animate__fadeInRight mobile-widget" data-wow-delay="0.8s">
-                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )
+        {{--                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"--}}
+        {{--                             alt="" class="img-fluid">--}}
+        {{--                    @endif--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--            <div class="col-lg-2">--}}
+        {{--                <div class="wow animate__fadeInRight mobile-widget" data-wow-delay="0.8s">--}}
+        {{--                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )--}}
 
-                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"
-                             alt="" class="img-fluid ">
-                    @else
+        {{--                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"--}}
+        {{--                             alt="" class="img-fluid ">--}}
+        {{--                    @else--}}
 
-                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"
-                             alt="" class="img-fluid">
-                    @endif
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="wow animate__fadeInRight mobile-widget" data-wow-delay="1s">
-                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )
+        {{--                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"--}}
+        {{--                             alt="" class="img-fluid">--}}
+        {{--                    @endif--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--            <div class="col-lg-2">--}}
+        {{--                <div class="wow animate__fadeInRight mobile-widget" data-wow-delay="1s">--}}
+        {{--                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )--}}
 
-                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"
-                             alt="" class="img-fluid">
-                    @else
+        {{--                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"--}}
+        {{--                             alt="" class="img-fluid">--}}
+        {{--                    @else--}}
 
-                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"
-                             alt="" class="img-fluid">
-                    @endif
-                </div>
-            </div>
+        {{--                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"--}}
+        {{--                             alt="" class="img-fluid">--}}
+        {{--                    @endif--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
+        <div style="display: flex;justify-content: center;align-items: center;">
+            <img
+                src="{{asset('public/images/gorgov-5.jpg')}}"
+                alt=""
+                width="50%"
+                class="img-fluid wow animate__fadeInUp mt-5 rounded"
+                data-wow-delay="0.2s"
+            />
         </div>
-        <img
-            src="{{asset('landing/images/dashboard.png')}}"
-            alt=""
-            class="img-fluid img-dashboard wow animate__fadeInUp mt-5"  style='border-radius: 15px;'
-            data-wow-delay="0.2s"
-        />
+
     </div>
 </section>
 <!-- [ client ] End -->
@@ -276,26 +280,26 @@
                     class="mb-sm-4 f-w-600 wow animate__fadeInLeft"
                     data-wow-delay="0.2s"
                 >
-                    {{__('ERPGo SaaS')}}
+                    {{__('GORGOV ERP')}}
                 </h1>
                 <h2 class="mb-sm-4 wow animate__fadeInLeft" data-wow-delay="0.4s">
                     {{__(' All In One Business ERP With Project, Account, HRM, CRM')}}
                 </h2>
-                <p class="mb-sm-4 wow animate__fadeInLeft" data-wow-delay="0.6s">
-                    Use these awesome forms to login or create new account in your
-                    project for free.
-                </p>
-                <div class="my-4 wow animate__fadeInLeft" data-wow-delay="0.8s">
-                    <a href="#" class="btn btn-primary" target="_blank"
-                    ><i class="fas fa-shopping-cart me-2"></i>Buy now</a
-                    >
-                </div>
+{{--                <p class="mb-sm-4 wow animate__fadeInLeft" data-wow-delay="0.6s">--}}
+{{--                    Use these awesome forms to login or create new account in your--}}
+{{--                    project for free.--}}
+{{--                </p>--}}
+{{--                <div class="my-4 wow animate__fadeInLeft" data-wow-delay="0.8s">--}}
+{{--                    <a href="#" class="btn btn-primary" target="_blank"--}}
+{{--                    ><i class="fas fa-shopping-cart me-2"></i>Buy now</a--}}
+{{--                    >--}}
+{{--                </div>--}}
             </div>
             <div class="col-sm-6">
                 <img
-                    src="{{asset('landing/images/dashboard.png')}}"
-                    alt="Datta Able Admin Template"
-                    class="img-fluid header-img wow animate__fadeInRight"
+                    src="{{asset('public/images/gorgov-3.jpg')}}"
+                    alt="gorgov"
+                    class="img-fluid header-img wow animate__fadeInRight rounded"
                     data-wow-delay="0.2s"
                 />
             </div>
@@ -303,9 +307,9 @@
         <div class="row align-items-center justify-content-start">
             <div class="col-sm-6">
                 <img
-                    src="{{asset('assets/images/front/img-crm-dash-2.svg')}}"
-                    alt="Datta Able Admin Template"
-                    class="img-fluid header-img wow animate__fadeInLeft"
+                    src="{{asset('public/images/gorgov-4.jpg')}}"
+                    alt="gorgov"
+                    class="img-fluid header-img wow animate__fadeInLeft rounded"
                     data-wow-delay="0.2s"
                 />
             </div>
@@ -314,20 +318,20 @@
                     class="mb-sm-4 f-w-600 wow animate__fadeInRight"
                     data-wow-delay="0.2s"
                 >
-                    {{__('ERPGo SaaS')}}
+                    {{__('GORGOV ERP')}}
                 </h1>
                 <h2 class="mb-sm-4 wow animate__fadeInRight" data-wow-delay="0.4s">
                     {{__('All In One Business ERP With Project, Account, HRM, CRM')}}
                 </h2>
-                <p class="mb-sm-4 wow animate__fadeInRight" data-wow-delay="0.6s">
-                    Use these awesome forms to login or create new account in your
-                    project for free.
-                </p>
-                <div class="my-4 wow animate__fadeInRight" data-wow-delay="0.8s">
-                    <a href="#" class="btn btn-primary" target="_blank"
-                    ><i class="fas fa-shopping-cart me-2"></i>Buy now</a
-                    >
-                </div>
+{{--                <p class="mb-sm-4 wow animate__fadeInRight" data-wow-delay="0.6s">--}}
+{{--                    Use these awesome forms to login or create new account in your--}}
+{{--                    project for free.--}}
+{{--                </p>--}}
+{{--                <div class="my-4 wow animate__fadeInRight" data-wow-delay="0.8s">--}}
+{{--                    <a href="#" class="btn btn-primary" target="_blank"--}}
+{{--                    ><i class="fas fa-shopping-cart me-2"></i>Buy now</a--}}
+{{--                    >--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>
@@ -388,10 +392,10 @@
                         </div>
                         <h6 class="text-muted mt-4">ABOUT</h6>
                         <h4 class="my-3 f-w-600">Feature</h4>
-                        <p class="mb-0">
-                            Use these awesome forms to login or create new account in your
-                            project for free.
-                        </p>
+                        {{--                        <p class="mb-0">--}}
+                        {{--                            Use these awesome forms to login or create new account in your--}}
+                        {{--                            project for free.--}}
+                        {{--                        </p>--}}
                     </div>
                 </div>
             </div>
@@ -549,7 +553,7 @@
                         >$59<small class="text-sm">/month</small></span
                         >
                         <p class="mb-0">
-                            You have Free Unlimited Updates and <br />
+                            You have Free Unlimited Updates and <br/>
                             Premium Support on each package.
                         </p>
                         <ul class="list-unstyled my-5">
@@ -599,7 +603,7 @@
                         >$59<small class="text-sm">/month</small></span
                         >
                         <p class="mb-0">
-                            You have Free Unlimited Updates and <br />
+                            You have Free Unlimited Updates and <br/>
                             Premium Support on each package.
                         </p>
                         <ul class="list-unstyled my-5">
@@ -655,7 +659,7 @@
                         >$119<small class="text-sm">/month</small></span
                         >
                         <p class="mb-0">
-                            You have Free Unlimited Updates and <br />
+                            You have Free Unlimited Updates and <br/>
                             Premium Support on each package.
                         </p>
                         <ul class="list-unstyled my-5">
@@ -940,12 +944,14 @@
             <div class="col-lg-6 col-sm-12">
                 @if($settings['cust_darklayout'] && $settings['cust_darklayout'] == 'on' )
 
-                    <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"
-                         alt="logo" style="width: 150px;" >
+                    <img
+                        src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"
+                        alt="logo" style="width: 150px;">
                 @else
 
-                    <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"
-                         alt="logo" style="width: 150px;" >
+                    <img
+                        src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"
+                        alt="logo" style="width: 150px;">
                 @endif
             </div>
             <div class="col-lg-6 col-sm-12 text-end">

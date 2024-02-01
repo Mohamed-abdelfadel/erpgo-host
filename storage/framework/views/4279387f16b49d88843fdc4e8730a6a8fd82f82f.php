@@ -25,11 +25,11 @@
 
                             <?php if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' ): ?>
                                 <img
-                                    src="<?php echo e($logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png')); ?>"
+                                    src="<?php echo e(asset('/logos/gorgov-light.png')); ?>"
                                     alt="<?php echo e(config('app.name', 'ERPGo-SaaS')); ?>" class="logo logo-lg">
                             <?php else: ?>
                                 <img
-                                    src="<?php echo e($logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png')); ?>"
+                                    src="<?php echo e(asset('/logos/gorgov-dark.png')); ?>"
                                     alt="<?php echo e(config('app.name', 'ERPGo-SaaS')); ?>" class="logo logo-lg">
                             <?php endif; ?>
 

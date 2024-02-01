@@ -14,7 +14,7 @@ class AddModeToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('mode', 10)->default('light')->after('lang');
+            $table->string('mode', 10)->default('dark')->after('lang');
         });
     }
 

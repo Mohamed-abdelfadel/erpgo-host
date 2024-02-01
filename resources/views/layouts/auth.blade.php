@@ -23,10 +23,12 @@
 @endphp
 
 {{--<html lang="en" dir="{{$SITE_RTL == 'on' ? 'rtl' : '' }}">--}}
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{isset($setting['SITE_RTL']) && $setting['SITE_RTL'] == 'on' ? 'rtl' : '' }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+      dir="{{isset($setting['SITE_RTL']) && $setting['SITE_RTL'] == 'on' ? 'rtl' : '' }}">
 
 <head>
-    <title>{{(Utility::getValByName('title_text')) ? Utility::getValByName('title_text') : config('app.name', 'ERPGO')}} - @yield('page-title')</title>
+    <title>{{(Utility::getValByName('title_text')) ? Utility::getValByName('title_text') : config('app.name', 'ERPGO')}}
+        - @yield('page-title')</title>
 
     <meta name="title" content="{{$metatitle}}">
     <meta name="description" content="{{$metsdesc}}">
@@ -54,7 +56,9 @@
     <meta name="author" content="Rajodiya Infotech"/>
 
     <!-- Favicon icon -->
-    <link rel="icon" href="{{$logo.'/'.(isset($company_favicon) && !empty($company_favicon)?$company_favicon:'favicon.png')}}" type="image/x-icon"/>
+    <link rel="icon"
+          href="{{$logo.'/'.(isset($company_favicon) && !empty($company_favicon)?$company_favicon:'favicon.png')}}"
+          type="image/x-icon"/>
 
     <!-- font css -->
     <link rel="stylesheet" href="{{ asset('assets/fonts/tabler-icons.min.css') }}">
@@ -64,7 +68,7 @@
 
     <!-- vendor css -->
 
-@if ($setting['SITE_RTL'] == 'on')
+    @if ($setting['SITE_RTL'] == 'on')
         <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css')}}" id="main-style-link">
     @endif
     @if($setting['cust_darklayout']=='on')
@@ -74,7 +78,7 @@
     @endif
 
 
-{{--    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link">--}}
+    {{--    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link">--}}
     <link rel="stylesheet" href="{{ asset('assets/css/customizer.css') }}">
 
 </head>
@@ -86,13 +90,17 @@
         <nav class="navbar navbar-expand-md navbar-light default">
             <div class="container-fluid pe-2">
                 <a class="navbar-brand" href="#">
-{{--                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt="logo"/>--}}
+                    {{--                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt="logo"/>--}}
                     @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )
-                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"
-                             alt="{{ config('app.name', 'ERPGo-SaaS') }}" class="logo w-50">
+                        <img src="{{ asset('public/logos/gorgov-light.png') }}"
+                             alt="gorgov"
+                             width="7%">
+
                     @else
-                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"
-                             alt="{{ config('app.name', 'ERPGo-SaaS') }}" class="logo w-50">
+                        <img src="{{ asset('public/logos/gorgov-dark.png') }}"
+                             alt="gorgov"
+                             width="7%">
+
                     @endif
                 </a>
                 <button
@@ -108,15 +116,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="flex-grow: 0;">
                     <ul class="navbar-nav align-items-center ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Support</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Terms</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Privacy</a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link active" href="#">Support</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="#">Terms</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="#">Privacy</a>--}}
+{{--                        </li>--}}
                         @yield('auth-topbar')
                     </ul>
 
@@ -133,9 +141,9 @@
                 <div class="col-xl-6 img-card-side">
                     <div class="auth-img-content">
                         <img
-                            src="{{ asset('assets/images/auth/img-auth-3.svg') }}"
-                            alt=""
-                            class="img-fluid"
+                            src="{{ asset('public/images/gorgov-1.jpg') }}"
+                            alt="gorgov"
+                            class="rounded img-fluid  "
                         />
                         <h3 class="text-white mb-4 mt-5">
                             “Attention is the new currency”
@@ -153,7 +161,7 @@
                 <div class="row">
                     <div class="col-6">
                         <p class="">
-                            {{(Utility::getValByName('footer_text')) ? Utility::getValByName('footer_text') :  __('Copyright ERPGO') }} {{ date('Y') }}
+                            {{(Utility::getValByName('footer_text')) ? Utility::getValByName('footer_text') :  __('Copyright Gorgov') }} {{ date('Y') }}
                         </p>
                     </div>
 
@@ -202,7 +210,6 @@
             document.querySelector("body").classList.add(temp);
         });
     }
-
 
 
     var custthemebg = document.querySelector("#cust-theme-bg");
