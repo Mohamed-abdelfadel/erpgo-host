@@ -1,6 +1,6 @@
 <?php
-   // $profile=asset(Storage::url('uploads/avatar/'));
-    $profile=\App\Models\Utility::get_file('uploads/avatar');
+    // $profile=asset(Storage::url('uploads/avatar/'));
+     $profile=\App\Models\Utility::get_file('uploads/avatar');
 ?>
 <?php $__env->startSection('page-title'); ?>
     <?php echo e(__('Manage User')); ?>
@@ -15,7 +15,8 @@
 <?php $__env->startSection('action-btn'); ?>
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create user')): ?>
         <div class="float-end">
-            <a href="#" data-size="lg" data-url="<?php echo e(route('users.create')); ?>" data-ajax-popup="true"  data-bs-toggle="tooltip" title="<?php echo e(__('Create')); ?>"  class="btn btn-sm btn-primary">
+            <a href="#" data-size="lg" data-url="<?php echo e(route('users.create')); ?>" data-ajax-popup="true"
+               data-bs-toggle="tooltip" title="<?php echo e(__('Create')); ?>" class="btn btn-sm btn-primary">
                 <i class="ti ti-plus"></i>
             </a>
         </div>
@@ -52,7 +53,10 @@
                                                 <div class="dropdown-menu dropdown-menu-end">
 
                                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit user')): ?>
-                                                        <a href="#!" data-size="lg" data-url="<?php echo e(route('users.edit',$user->id)); ?>" data-ajax-popup="true" class="dropdown-item" data-bs-original-title="<?php echo e(__('Edit User')); ?>">
+                                                        <a href="#!" data-size="lg"
+                                                           data-url="<?php echo e(route('users.edit',$user->id)); ?>"
+                                                           data-ajax-popup="true" class="dropdown-item"
+                                                           data-bs-original-title="<?php echo e(__('Edit User')); ?>">
                                                             <i class="ti ti-pencil"></i>
                                                             <span><?php echo e(__('Edit')); ?></span>
                                                         </a>
@@ -61,15 +65,24 @@
                                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete user')): ?>
                                                         <?php echo Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user['id']],'id'=>'delete-form-'.$user['id']]); ?>
 
-                                                        <a href="#!"  class="dropdown-item bs-pass-para">
+                                                        <a href="#!" class="dropdown-item bs-pass-para">
                                                             <i class="ti ti-archive"></i>
-                                                            <span> <?php if($user->delete_status!=0): ?><?php echo e(__('Delete')); ?> <?php else: ?> <?php echo e(__('Restore')); ?><?php endif; ?></span>
+                                                            <span> <?php if($user->delete_status!=0): ?>
+                                                                    <?php echo e(__('Delete')); ?>
+
+                                                                <?php else: ?>
+                                                                    <?php echo e(__('Restore')); ?>
+
+                                                                <?php endif; ?></span>
                                                         </a>
                                                         <?php echo Form::close(); ?>
 
                                                     <?php endif; ?>
 
-                                                    <a href="#!" data-url="<?php echo e(route('users.reset',\Crypt::encrypt($user->id))); ?>" data-ajax-popup="true" data-size="md" class="dropdown-item" data-bs-original-title="<?php echo e(__('Reset Password')); ?>">
+                                                    <a href="#!"
+                                                       data-url="<?php echo e(route('users.reset',\Crypt::encrypt($user->id))); ?>"
+                                                       data-ajax-popup="true" data-size="md" class="dropdown-item"
+                                                       data-bs-original-title="<?php echo e(__('Reset Password')); ?>">
                                                         <i class="ti ti-adjustments"></i>
                                                         <span>  <?php echo e(__('Reset Password')); ?></span>
                                                     </a>
@@ -84,7 +97,7 @@
                             </div>
                             <div class="card-body full-card">
                                 <div class="img-fluid rounded-circle card-avatar">
-                                    <img src="<?php echo e((!empty($user->avatar))? asset(Storage::url("uploads/avatar/".$user->avatar)): asset(Storage::url("uploads/avatar/avatar.png"))); ?>" class="img-user wid-80 round-img rounded-circle">
+                                    <img src="<?php echo e(!empty($users->avatar) ? asset("storage/uploads/avatar/$users->avatar") : asset("storage/avatar/avatar.png")); ?>" class="img-user wid-80 round-img rounded-circle">
                                 </div>
                                 <h4 class=" mt-3 text-primary"><?php echo e($user->name); ?></h4>
                                 <?php if($user->delete_status==0): ?>
@@ -100,17 +113,20 @@
                                     <div class="mt-4">
                                         <div class="row justify-content-between align-items-center">
                                             <div class="col-6 text-center">
-                                                <span class="d-block font-bold mb-0"><?php echo e(!empty($user->currentPlan)?$user->currentPlan->name:''); ?></span>
+                                                <span
+                                                    class="d-block font-bold mb-0"><?php echo e(!empty($user->currentPlan)?$user->currentPlan->name:''); ?></span>
                                             </div>
                                             <div class="col-6 text-center Id ">
-                                                <a href="#" data-url="<?php echo e(route('plan.upgrade',$user->id)); ?>" data-size="lg" data-ajax-popup="true" class="btn btn-outline-primary"
+                                                <a href="#" data-url="<?php echo e(route('plan.upgrade',$user->id)); ?>"
+                                                   data-size="lg" data-ajax-popup="true" class="btn btn-outline-primary"
                                                    data-title="<?php echo e(__('Upgrade Plan')); ?>"><?php echo e(__('Upgrade Plan')); ?></a>
                                             </div>
                                             <div class="col-12">
                                                 <hr class="my-3">
                                             </div>
                                             <div class="col-12 text-center pb-2">
-                                                <span class="text-dark text-xs"><?php echo e(__('Plan Expired : ')); ?> <?php echo e(!empty($user->plan_expire_date) ? \Auth::user()->dateFormat($user->plan_expire_date): __('Unlimited')); ?></span>
+                                                <span
+                                                    class="text-dark text-xs"><?php echo e(__('Plan Expired : ')); ?> <?php echo e(!empty($user->plan_expire_date) ? \Auth::user()->dateFormat($user->plan_expire_date): __('Unlimited')); ?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -121,13 +137,25 @@
                                                 <div class="card-body p-3">
                                                     <div class="row">
                                                         <div class="col-4">
-                                                            <p class="text-muted text-sm mb-0" data-bs-toggle="tooltip" title="<?php echo e(__('Users')); ?>"><i class="ti ti-users card-icon-text-space"></i><?php echo e($user->totalCompanyUser($user->id)); ?></p>
+                                                            <p class="text-muted text-sm mb-0" data-bs-toggle="tooltip"
+                                                               title="<?php echo e(__('Users')); ?>"><i
+                                                                    class="ti ti-users card-icon-text-space"></i><?php echo e($user->totalCompanyUser($user->id)); ?>
+
+                                                            </p>
                                                         </div>
                                                         <div class="col-4">
-                                                            <p class="text-muted text-sm mb-0" data-bs-toggle="tooltip" title="<?php echo e(__('Customers')); ?>"><i class="ti ti-users card-icon-text-space"></i><?php echo e($user->totalCompanyCustomer($user->id)); ?></p>
+                                                            <p class="text-muted text-sm mb-0" data-bs-toggle="tooltip"
+                                                               title="<?php echo e(__('Customers')); ?>"><i
+                                                                    class="ti ti-users card-icon-text-space"></i><?php echo e($user->totalCompanyCustomer($user->id)); ?>
+
+                                                            </p>
                                                         </div>
                                                         <div class="col-4">
-                                                            <p class="text-muted text-sm mb-0" data-bs-toggle="tooltip" title="<?php echo e(__('Vendors')); ?>"><i class="ti ti-users card-icon-text-space"></i><?php echo e($user->totalCompanyVender($user->id)); ?></p>
+                                                            <p class="text-muted text-sm mb-0" data-bs-toggle="tooltip"
+                                                               title="<?php echo e(__('Vendors')); ?>"><i
+                                                                    class="ti ti-users card-icon-text-space"></i><?php echo e($user->totalCompanyVender($user->id)); ?>
+
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>

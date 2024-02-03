@@ -69,7 +69,7 @@
                             </div>
                             <div class="card-body full-card">
                                 <div class="img-fluid rounded-circle card-avatar">
-                                    <img src="{{(!empty($client->avatar))? asset(Storage::url("uploads/avatar/".$client->avatar)): asset(Storage::url("uploads/avatar/avatar.png"))}}"  class="img-user wid-80 rounded-circle">
+                                    <img src="{{ !empty($users->avatar) ? asset("storage/uploads/avatar/$users->avatar") : asset("storage/avatar/avatar.png") }}" class="img-user wid-80 round-img rounded-circle">
                                 </div>
                                 <h4 class="mt-2 text-primary">{{ $client->name }}</h4>
                                 <p></p>
