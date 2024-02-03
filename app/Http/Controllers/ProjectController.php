@@ -36,7 +36,7 @@ class ProjectController extends Controller
     public function index($view = 'grid')
     {
 
-        if(\Auth::user()->can('manage project'))
+        if(Auth::user()->can('manage project'))
         {
             return view('projects.index', compact('view'));
         }
@@ -71,19 +71,14 @@ class ProjectController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
 
-        if(\Auth::user()->can('create project'))
+        if(Auth::user()->can('create project'))
         {
-            $validator = \Validator::make(
-                $request->all(), [
-                                'project_name' => 'required',
-                                'project_image' => 'required',
-                            ]
-            );
+            $validator = Validator::make($request->all(), ['project_name' => 'required',]);
             if($validator->fails())
             {
                 return redirect()->back()->with('error', Utility::errorFormat($validator->getMessageBag()));
@@ -104,12 +99,12 @@ class ProjectController extends Controller
             $project->status = $request->status;
             $project->estimated_hrs = $request->estimated_hrs;
             $project->tags = $request->tag;
-            $project->created_by = \Auth::user()->creatorId();
+            $project->created_by = Auth::user()->creatorId();
             $project['copylinksetting']   = '{"member":"on","milestone":"off","basic_details":"on","activity":"off","attachment":"on","bug_report":"on","task":"off","tracker_details":"off","timesheet":"off" ,"password_protected":"off"}';
 
             $project->save();
 
-            if(\Auth::user()->type=='company'){
+            if(Auth::user()->type=='company'){
 
                 ProjectUser::create(
                     [

@@ -534,6 +534,7 @@
                     <div class="card-body vertical-scroll-cards">
                         @foreach($project->activities as $activity)
                             <div class="card p-2 mb-2">
+{{--                                TODO fix activity log for the project --}}
 {{--                                <div class="d-flex align-items-center justify-content-between">--}}
 {{--                                    <div class="d-flex align-items-center">--}}
 {{--                                        <div class="theme-avtar bg-primary">--}}

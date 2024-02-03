@@ -51,17 +51,18 @@ class Project extends Model
     protected $appends = ['img_image'];
 
     // Make new attribute for directly get image
-    public function getImgImageAttribute()
-    {
-        if(\Storage::exists($this->project_image) && !empty($this->project_image))
-        {
-            return $this->attributes['img_image'] = 'src=' . asset(\Storage::url($this->project_image));
-        }
-        else
-        {
-            return $this->attributes['img_image'] = 'avatar=' . $this->project_name;
-        }
-    }
+    //TODO fix this, commented to fix error
+//    public function getImgImageAttribute()
+//    {
+//        if(\Storage::exists($this->project_image) && !empty($this->project_image))
+//        {
+//            return $this->attributes['img_image'] = 'src=' . asset(\Storage::url($this->project_image));
+//        }
+//        else
+//        {
+//            return $this->attributes['img_image'] = 'avatar=' . $this->project_name;
+//        }
+//    }
 
     public static function projectHrs($project_id, $task_id = '')
     {
