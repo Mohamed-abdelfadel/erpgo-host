@@ -534,18 +534,18 @@
                     <div class="card-body vertical-scroll-cards">
                         @foreach($project->activities as $activity)
                             <div class="card p-2 mb-2">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <div class="theme-avtar bg-primary">
-                                            <i class="ti ti-{{$activity->logIcon($activity->log_type)}}"></i>
-                                        </div>
-                                        <div class="ms-3">
-                                            <h6 class="mb-0">{{ __($activity->log_type) }}</h6>
-                                            <p class="text-muted text-sm mb-0">{!! $activity->getRemark() !!}</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-muted text-sm mb-0">{{$activity->created_at->diffForHumans()}}</p>
-                                </div>
+{{--                                <div class="d-flex align-items-center justify-content-between">--}}
+{{--                                    <div class="d-flex align-items-center">--}}
+{{--                                        <div class="theme-avtar bg-primary">--}}
+{{--                                            <i class="ti ti-{{$activity->logIcon($activity->log_type)}}"></i>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="ms-3">--}}
+{{--                                            <h6 class="mb-0">{{ __($activity->log_type) }}</h6>--}}
+{{--                                            <p class="text-muted text-sm mb-0">{!! $activity->getRemark() !!}</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <p class="text-muted text-sm mb-0">{{$activity->created_at->diffForHumans()}}</p>--}}
+{{--                                </div>--}}
                             </div>
                         @endforeach
                     </div>
