@@ -306,7 +306,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div class="avatar me-3">
-                            <img <?php echo e($project->img_image); ?> alt="" class="img-user wid-45 rounded-circle">
+                            <img src=<?php echo e(asset("storage/projects/$project->project_image	")); ?> alt="" class="img-user wid-45 ">
                         </div>
                         <div class="d-block  align-items-center justify-content-between w-100">
                             <div class="mb-3 mb-sm-0">
@@ -545,18 +545,18 @@
                     <div class="card-body vertical-scroll-cards">
                         <?php $__currentLoopData = $project->activities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $activity): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="card p-2 mb-2">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <div class="theme-avtar bg-primary">
+                                            <i class="ti ti-<?php echo e($activity->logIcon($activity->log_type)); ?>"></i>
+                                        </div>
+                                        <div class="ms-3">
+                                            <h6 class="mb-0"><?php echo e(__($activity->log_type)); ?></h6>
 
-
-
-
-
-
-
-
-
-
-
-
+                                        </div>
+                                    </div>
+                                    <p class="text-muted text-sm mb-0"><?php echo e($activity->created_at->diffForHumans()); ?></p>
+                                </div>
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>

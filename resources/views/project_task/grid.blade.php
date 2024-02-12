@@ -33,6 +33,7 @@
   <div class="col-12">
     <div class="card">
         <div class="row">
+{{--            @php(dd($tasks))--}}
             @if(count($tasks) > 0)
                 @foreach($tasks as $task)
                     <div class="col-md-3 col-lg-3 col-sm-3">

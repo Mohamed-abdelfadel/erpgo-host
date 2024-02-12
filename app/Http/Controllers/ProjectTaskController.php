@@ -26,16 +26,33 @@ class ProjectTaskController extends Controller
 
     public function __construct()
     {
-        $this->token = "2/1206237134658753/1206523070023323:8896bb1c87be8f1377a8c6d071dac8b0";
-        $this->baseUrl = "https://app.asana.com/api/1.0/user_task_lists/1206237135068831/tasks";
+        $this->token = "2/1206237134658753/1206523070023323:0620093d69059b8e9f5e72d8e961251c";
+        $this->baseUrl = "https://app.asana.com/api/1.0/projects";
     }
 
     public function index($project_id)
     {
-//        $tasks = Http::withToken($this->token)->get("$this->baseUrl");
-//        $tasks = json_decode($tasks);
-//        dd($tasks);
-        $usr = \Auth::user();
+        $task = Project::query()->find($project_id);
+        $user = Auth::user();
+        $tasks = Http::withToken($this->token)->get("$this->baseUrl/$task->gid/tasks");
+        $tasks = json_decode($tasks);
+        $tasks = $tasks->data;
+        foreach ($tasks as $task) {
+            $existingTask = ProjectTask::where('name', $task->name)->first();
+            if (!$existingTask) {
+            $newTask = new ProjectTask();
+            $newTask->name = $task->name;
+            $newTask->description = "This task imported from asana";
+            $newTask->start_date = now();
+            $newTask->end_date = "2025-01-01";
+            $newTask->priority = "low";
+            $newTask->assign_to = $user->id;
+            $newTask->project_id = $project_id;
+            $newTask->stage_id = 1;
+            $newTask->save();
+        }
+        }
+
         if(\Auth::user()->can('manage project task'))
         {
             $project = Project::where('id', $project_id)->where('created_by', \Auth::user()->creatorId())->first();
@@ -184,13 +201,14 @@ class ProjectTaskController extends Controller
     // For Taskboard View
     public function taskBoard($view)
     {
+        $user = Auth::user();
+        $tasks = ProjectTask::query()->whereRaw("FIND_IN_SET(?, assign_to)", [$user->id])->get();
+
         if($view == 'list'){
 
-            $tasks = ProjectTask::where('created_by',\Auth::user()->creatorId())->get();
             return view('project_task.taskboard', compact('view','tasks'));
           }else{
-              $tasks = ProjectTask::where('created_by',\Auth::user()->creatorId())->get();
-            return view('project_task.grid', compact('tasks','view'));
+            return view('project_task.grid', compact('view','tasks'));
           }
           return redirect()->back()->with('error', __('Permission Denied.'));
 
@@ -224,6 +242,11 @@ class ProjectTaskController extends Controller
     // For Load Task using ajax
     public function taskboardView(Request $request)
     {
+//        $user = Auth::user();
+//        $tasks = ProjectTask::query()->get();
+//        $tasks = ProjectTask::query()->whereRaw("FIND_IN_SET(?, assign_to)", [$user->id])->get();
+//        return $tasks;
+//        return view('project_task.list', compact('tasks'));
 
         $usr           = Auth::user();
         if(\Auth::user()->type == 'client'){

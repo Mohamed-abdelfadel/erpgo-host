@@ -237,7 +237,7 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <img src="{{asset(Storage::url('/'.$due_project->project_image ))}}"
+                                                <img src="{{asset("storage/projects/$due_project->project_image	")}}"
                                                      class="wid-40 rounded-circle me-3" >
                                                 <div>
                                                     <h6 class="mb-0">{{ $due_project->project_name }}</h6>

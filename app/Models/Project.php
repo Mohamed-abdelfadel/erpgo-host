@@ -50,7 +50,6 @@ class Project extends Model
 
     protected $appends = ['img_image'];
 
-    // Make new attribute for directly get image
     public function getImgImageAttribute()
     {
         if(\Storage::exists($this->project_image) && !empty($this->project_image))
@@ -125,7 +124,6 @@ class Project extends Model
     {
         return $this->hasMany('App\Models\ProjectTask', 'project_id', 'id')->orderBy('id', 'desc');
     }
-
     public function users()
     {
         return $this->belongsToMany('App\Models\User', 'project_users', 'project_id', 'user_id');

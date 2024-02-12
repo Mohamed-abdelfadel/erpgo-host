@@ -14,6 +14,17 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
+                {{Form::label('asana_user_id',__('Asana user id'),['class'=>'form-label'])}}
+                {{Form::text('asana_user_id',null,array('class'=>'form-control','placeholder'=>__('Enter Asana user id')))}}
+                @error('asana_user_id')
+                <small class="invalid-password" role="alert">
+                    <strong class="text-danger">{{ $message }}</strong>
+                </small>
+                @enderror
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
                 {{Form::label('email',__('Email'),['class'=>'form-label'])}}
                 {{Form::text('email',null,array('class'=>'form-control','placeholder'=>__('Enter User Email'),'required'=>'required'))}}
                 @error('email')
@@ -47,14 +58,15 @@
                 @enderror
             </div>
         </div>
-        @if(!$customFields->isEmpty())
-            <div class="col-md-6">
-                <div class="tab-pane fade show" id="tab-2" role="tabpanel">
-                    @include('customFields.formBuilder')
-                </div>
-            </div>
-        @endif
     </div>
+    @if(!$customFields->isEmpty())
+        <div class="col-md-6">
+            <div class="tab-pane fade show" id="tab-2" role="tabpanel">
+                @include('customFields.formBuilder')
+            </div>
+        </div>
+    @endif
+</div>
 
 </div>
 

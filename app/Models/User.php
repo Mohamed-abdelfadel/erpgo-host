@@ -31,6 +31,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'type',
         'avatar',
+        'asana_user_id',
+        'asana_workspace_id',
         'lang',
         'mode',
         'delete_status',

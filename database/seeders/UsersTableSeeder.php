@@ -3963,6 +3963,79 @@ class UsersTableSeeder extends Seeder
         );
         $salesSquadAdmin->assignRole($salesSquadAdminRole);
 
+
+        //Tasker
+        $taskerRole = Role::create(
+            [
+                'name' => 'tasker',
+                'created_by' => 2,
+            ]
+        );
+        $taskerPermission = [
+            ['name' => 'show project dashboard'],
+            ['name' => 'manage expense'],
+            ['name' => 'create expense'],
+            ['name' => 'edit expense'],
+            ['name' => 'delete expense'],
+            ['name' => 'manage project'],
+            ['name' => 'create project'],
+            ['name' => 'view project'],
+            ['name' => 'edit project'],
+            ['name' => 'delete project'],
+            ['name' => 'create milestone'],
+            ['name' => 'edit milestone'],
+            ['name' => 'delete milestone'],
+            ['name' => 'view milestone'],
+            ['name' => 'view grant chart'],
+            ['name' => 'manage project stage'],
+            ['name' => 'create project stage'],
+            ['name' => 'edit project stage'],
+            ['name' => 'delete project stage'],
+            ['name' => 'view timesheet'],
+            ['name' => 'view expense'],
+            ['name' => 'manage project task'],
+            ['name' => 'create project task'],
+            ['name' => 'edit project task'],
+            ['name' => 'view project task'],
+            ['name' => 'delete project task'],
+            ['name' => 'view activity'],
+            ['name' => 'view CRM activity'],
+            ['name' => 'manage project task stage'],
+            ['name' => 'edit project task stage'],
+            ['name' => 'create project task stage'],
+            ['name' => 'delete project task stage'],
+            ['name' => 'manage timesheet'],
+            ['name' => 'create timesheet'],
+            ['name' => 'edit timesheet'],
+            ['name' => 'delete timesheet'],
+            ['name' => 'manage bug report'],
+            ['name' => 'create bug report'],
+            ['name' => 'edit bug report'],
+            ['name' => 'delete bug report'],
+            ['name' => 'move bug report'],
+            ['name' => 'manage bug status'],
+            ['name' => 'create bug status'],
+            ['name' => 'edit bug status'],
+            ['name' => 'delete bug status']
+        ];
+        $taskerRole->givePermissionTo($taskerPermission);
+        $tasker = User::create(
+            [
+                'name' => 'tasker',
+                'email' => 'tasker@example.com',
+                'password' => Hash::make('1234'),
+                'type' => 'tasker',
+                'default_pipeline' => 1,
+                'plan' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => 2,
+                'email_verified_at' => now(),
+            ]
+        );
+        $tasker->assignRole($taskerRole);
+
+
         Utility::employeeDetails($accountant->id, $company->id);
         Utility::employeeDetails($client->id,$company->id);
         Utility::chartOfAccountTypeData($company->id);

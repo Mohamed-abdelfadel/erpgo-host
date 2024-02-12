@@ -298,7 +298,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div class="avatar me-3">
-                            <img {{ $project->img_image }} alt="" class="img-user wid-45 rounded-circle">
+                            <img src={{ asset("storage/projects/$project->project_image	") }} alt="" class="img-user wid-45 ">
                         </div>
                         <div class="d-block  align-items-center justify-content-between w-100">
                             <div class="mb-3 mb-sm-0">
@@ -534,18 +534,18 @@
                     <div class="card-body vertical-scroll-cards">
                         @foreach($project->activities as $activity)
                             <div class="card p-2 mb-2">
-{{--                                <div class="d-flex align-items-center justify-content-between">--}}
-{{--                                    <div class="d-flex align-items-center">--}}
-{{--                                        <div class="theme-avtar bg-primary">--}}
-{{--                                            <i class="ti ti-{{$activity->logIcon($activity->log_type)}}"></i>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="ms-3">--}}
-{{--                                            <h6 class="mb-0">{{ __($activity->log_type) }}</h6>--}}
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <div class="theme-avtar bg-primary">
+                                            <i class="ti ti-{{$activity->logIcon($activity->log_type)}}"></i>
+                                        </div>
+                                        <div class="ms-3">
+                                            <h6 class="mb-0">{{ __($activity->log_type) }}</h6>
 {{--                                            <p class="text-muted text-sm mb-0">{!! $activity->getRemark() !!}</p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <p class="text-muted text-sm mb-0">{{$activity->created_at->diffForHumans()}}</p>--}}
-{{--                                </div>--}}
+                                        </div>
+                                    </div>
+                                    <p class="text-muted text-sm mb-0">{{$activity->created_at->diffForHumans()}}</p>
+                                </div>
                             </div>
                         @endforeach
                     </div>

@@ -73,8 +73,10 @@ class ApiController extends Controller
 //                ]
 //            )->whereIn('id', $assign_pro_ids)->get()->toArray();
 
-            $project_s      = Project::with('tasks')->whereIn('id', $assign_pro_ids)->get()->toArray();
-
+//            $project_s      = Project::with('tasks')->whereIn('id', $assign_pro_ids)->get()->toArray();
+            $project_s = Project::with(['tasks' => function($query) use ($user) {
+                $query->whereRaw("FIND_IN_SET(?, assign_to)", [$user->id]);
+            }])->whereIn('id', $assign_pro_ids)->get()->toArray();
         }
         else
         {

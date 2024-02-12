@@ -23,6 +23,17 @@
                 @enderror
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                {{Form::label('asana_user_id',__('Asana user id'),['class'=>'form-label'])}}
+                {{Form::text('asana_user_id',null,array('class'=>'form-control','placeholder'=>__('Enter Asana user id')))}}
+                @error('asana_user_id')
+                <small class="invalid-email" role="alert">
+                    <strong class="text-danger">{{ $message }}</strong>
+                </small>
+                @enderror
+            </div>
+        </div>
         @if(\Auth::user()->type != 'super admin')
             <div class="form-group col-md-12">
                 {{ Form::label('role', __('User Role'),['class'=>'form-label']) }}

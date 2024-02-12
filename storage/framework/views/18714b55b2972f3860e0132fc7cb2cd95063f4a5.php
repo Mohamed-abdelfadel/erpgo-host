@@ -17,7 +17,6 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-
                             <?php if(count($tasks) > 0): ?>
                                 <?php $__currentLoopData = $tasks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $task): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>

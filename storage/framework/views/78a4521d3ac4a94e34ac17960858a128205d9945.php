@@ -19,7 +19,7 @@
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img <?php echo e($project->img_image); ?> class="wid-40 rounded me-3" alt="">
+                                            <img src="<?php echo e(asset("storage/projects/$project->project_image	")); ?>" class="wid-40 rounded me-3" alt="">
                                             <p class="mb-0"><a href="<?php echo e(route('projects.show',$project)); ?>" class="name mb-0 h6 text-sm"><?php echo e($project->project_name); ?></a></p>
                                         </div>
                                     </td>

@@ -32,6 +32,7 @@
   <div class="col-12">
     <div class="card">
         <div class="row">
+
             <?php if(count($tasks) > 0): ?>
                 <?php $__currentLoopData = $tasks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $task): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-md-3 col-lg-3 col-sm-3">

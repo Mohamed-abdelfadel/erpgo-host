@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->default(now());
             $table->string('password')->nullable();
             $table->integer('plan')->nullable();
+            $table->string('asana_user_id')->nullable();
+            $table->string('asana_workspace_id')->nullable();
             $table->date('plan_expire_date')->nullable();
             $table->string('type', 20)->nullable();
             $table->string('avatar', 100)->nullable();

@@ -80,7 +80,7 @@
             <div class="form-file mb-3">
                 <input type="file" class="form-control" name="project_image" >
             </div>
-            <img {{$project->img_image}} class="avatar avatar-xl" alt="">
+            <img src="{{ asset("storage/projects/$project->project_image") }}" class="avatar avatar-xl" alt="">
         </div>
 
     </div>

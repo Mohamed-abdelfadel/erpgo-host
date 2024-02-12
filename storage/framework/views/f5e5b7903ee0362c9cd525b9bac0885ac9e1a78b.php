@@ -24,6 +24,26 @@ unset($__errorArgs, $__bag); ?>
         </div>
         <div class="col-md-6">
             <div class="form-group">
+                <?php echo e(Form::label('asana_user_id',__('Asana user id'),['class'=>'form-label'])); ?>
+
+                <?php echo e(Form::text('asana_user_id',null,array('class'=>'form-control','placeholder'=>__('Enter Asana user id')))); ?>
+
+                <?php $__errorArgs = ['asana_user_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                <small class="invalid-password" role="alert">
+                    <strong class="text-danger"><?php echo e($message); ?></strong>
+                </small>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
                 <?php echo e(Form::label('email',__('Email'),['class'=>'form-label'])); ?>
 
                 <?php echo e(Form::text('email',null,array('class'=>'form-control','placeholder'=>__('Enter User Email'),'required'=>'required'))); ?>
@@ -85,14 +105,15 @@ endif;
 unset($__errorArgs, $__bag); ?>
             </div>
         </div>
-        <?php if(!$customFields->isEmpty()): ?>
-            <div class="col-md-6">
-                <div class="tab-pane fade show" id="tab-2" role="tabpanel">
-                    <?php echo $__env->make('customFields.formBuilder', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                </div>
-            </div>
-        <?php endif; ?>
     </div>
+    <?php if(!$customFields->isEmpty()): ?>
+        <div class="col-md-6">
+            <div class="tab-pane fade show" id="tab-2" role="tabpanel">
+                <?php echo $__env->make('customFields.formBuilder', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
 
 </div>
 

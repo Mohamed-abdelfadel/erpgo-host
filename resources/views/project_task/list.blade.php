@@ -17,7 +17,6 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-
                             @if(count($tasks) > 0)
                                 @foreach($tasks as $task)
                                     <tr>

@@ -74,9 +74,9 @@ class UserController extends Controller
         if(\Auth::user()->can('create user'))
         {
             $default_language = DB::table('settings')->select('value')->where('name', 'default_language')->first();
-            if(\Auth::user()->type == 'super admin')
+            if(Auth::user()->type == 'super admin')
             {
-                $validator = \Validator::make(
+                $validator = Validator::make(
                     $request->all(), [
                                        'name' => 'required|max:120',
                                        'email' => 'required|email|unique:users',
@@ -97,6 +97,7 @@ class UserController extends Controller
                 $user['type']       = 'company';
                 $user['default_pipeline'] = 1;
                 $user['plan'] = 1;
+                $user['asana_user_id'] = $request->asana_user_id;
                 $user['lang']       = !empty($default_language) ? $default_language->value : '';
                 $user['created_by'] = \Auth::user()->creatorId();
                 $user['plan']       = Plan::first()->id;
