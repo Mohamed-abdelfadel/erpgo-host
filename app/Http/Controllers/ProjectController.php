@@ -42,29 +42,7 @@ class ProjectController extends Controller
     public function index($view = 'grid')
     {
         if (Auth::user()->can('manage project')) {
-            $user = Auth::user();
-            $projects = Http::withToken($this->token)->get("$this->baseUrl");
-            $projects = json_decode($projects);
-            $projects = $projects->data;
-            foreach ($projects as $project) {
-                $existingProject = Project::where('project_name', $project->name)->first();
-                if (!$existingProject) {
-                    $newProject = new Project();
-                    $newProject->gid = $project->gid;
-                    $newProject->project_name = $project->name;
-                    $newProject->status = "in_progress";
-                    $newProject->project_image	 = "asana.png";
-                    $newProject->created_by = $user->id;
-                    $newProject->start_date = now();
-                    $newProject->end_date = "2025-01-01";
-                    $newProject->budget = 0;
-                    $newProject->save();
-                    $newProjectUser = new ProjectUser();
-                    $newProjectUser->project_id = $newProject->id;
-                    $newProjectUser->user_id = $user->id;
-                    $newProjectUser->save();
-                }
-            }
+            AsanaController::syncProjects();
             return view('projects.index', compact('view'));
         } else {
             return redirect()->back()->with('error', __('Permission Denied.'));
