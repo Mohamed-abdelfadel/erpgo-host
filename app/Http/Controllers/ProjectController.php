@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProjectStage;
-use App\Models\Task;
 use App\Models\TaskComment;
 use App\Models\TaskFile;
 use App\Models\TaskStage;
@@ -21,10 +19,7 @@ use App\Models\ActivityLog;
 use App\Models\ProjectTask;
 use App\Models\ProjectUser;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
