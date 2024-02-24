@@ -16,10 +16,14 @@ class CreateProjectsTable extends Migration
         if(!Schema::hasTable('projects')){
             Schema::create('projects', function (Blueprint $table) {
                 $table->id();
-                $table->string('gid')->nullable();
+                $table->string('gid')->nullable()->unique();
+                $table->string('asana_url')->nullable()->unique();
+                $table->string('color')->nullable();
+                $table->boolean('completed')->default(false);
                 $table->string('project_name');
                 $table->date('start_date')->nullable();
                 $table->date('end_date')->nullable();
+                $table->date('completed_at')->nullable();
                 $table->string('project_image')->nullable();
                 $table->integer('budget')->nullable();
                 $table->integer('client_id');

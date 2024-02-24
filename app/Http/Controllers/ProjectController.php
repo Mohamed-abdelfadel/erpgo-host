@@ -42,7 +42,9 @@ class ProjectController extends Controller
     public function index($view = 'grid')
     {
         if (Auth::user()->can('manage project')) {
-            AsanaController::syncProjects();
+            if (!AsanaProjectController::checkProjectSync()){
+                AsanaProjectController::syncProjects();
+            }
             return view('projects.index', compact('view'));
         } else {
             return redirect()->back()->with('error', __('Permission Denied.'));
@@ -86,35 +88,49 @@ class ProjectController extends Controller
             if ($validator->fails()) {
                 return redirect()->back()->with('error', Utility::errorFormat($validator->getMessageBag()));
             }
-            $project = new Project();
-            $project->project_name = $request->project_name;
-            $project->start_date = date("Y-m-d H:i:s", strtotime($request->start_date));
-            $project->end_date = date("Y-m-d H:i:s", strtotime($request->end_date));
-            if ($request->hasFile('project_image')) {
-                $imageName = time() . '.' . $request->project_image->extension();
-                $request->file('project_image')->storeAs('projects', $imageName);
-                $project->project_image = 'projects/' . $imageName;
-            }
-            $project->client_id = $request->client;
-            $project->budget = !empty($request->budget) ? $request->budget : 0;
-            $project->description = $request->description;
-            $project->status = $request->status;
-            $project->estimated_hrs = $request->estimated_hrs;
-            $project->tags = $request->tag;
-            $project->created_by = \Auth::user()->creatorId();
-            $project['copylinksetting'] = '{"member":"on","milestone":"off","basic_details":"on","activity":"off","attachment":"on","bug_report":"on","task":"off","tracker_details":"off","timesheet":"off" ,"password_protected":"off"}';
+            $response = AsanaProjectController::createProject($request);
 
-            $project->save();
+            if ($response->successful()){
+                $projectData = $response->json();
+                $projectData = $projectData['data'];
+                $project = new Project();
+                $project->gid = $projectData['gid'];
+                $project->asana_url = $projectData['permalink_url'];
+                $project->project_name = $request->project_name;
+                $project->start_date = date("Y-m-d H:i:s", strtotime($request->start_date));
+                $project->end_date = date("Y-m-d H:i:s", strtotime($request->end_date));
+                if ($request->hasFile('project_image')) {
+                    $imageName = time() . '.' . $request->project_image->extension();
+                    $request->file('project_image')->storeAs('projects', $imageName);
+                    $project->project_image  = $imageName;
+                }
+                $project->client_id = $request->client;
+                $project->budget = !empty($request->budget) ? $request->budget : 0;
+                $project->description = $request->description;
+                $project->status = $request->status;
+                $project->estimated_hrs = $request->estimated_hrs;
+                $project->tags = $request->tag;
+                $project->created_by = Auth::user()->creatorId();
+                $project['copylinksetting'] = '{"member":"on","milestone":"off","basic_details":"on","activity":"off","attachment":"on","bug_report":"on","task":"off","tracker_details":"off","timesheet":"off" ,"password_protected":"off"}';
 
-            if (\Auth::user()->type == 'company') {
+                $project->save();
 
+
+
+            if (Auth::user()->type == 'company') {
+                $hsn = User::query()->where('gid','1205184575016204')->first();
                 ProjectUser::create(
                     [
                         'project_id' => $project->id,
                         'user_id' => Auth::user()->id,
                     ]
                 );
-
+                ProjectUser::create(
+                    [
+                        'project_id' => $project->id,
+                        'user_id' =>$hsn->id ,
+                    ]
+                );
                 if ($request->user) {
                     foreach ($request->user as $key => $value) {
                         ProjectUser::create(
@@ -152,7 +168,7 @@ class ProjectController extends Controller
                         );
                     }
                 }
-
+            }
             }
 
 
@@ -413,6 +429,7 @@ class ProjectController extends Controller
                 Utility::checkFileExistsnDelete([$project->project_image]);
             }
             $project->delete();
+            AsanaProjectController::deleteProject();
             return redirect()->back()->with('success', __('Project Successfully Deleted.'));
         } else {
             return redirect()->back()->with('error', __('Permission Denied.'));
@@ -435,24 +452,24 @@ class ProjectController extends Controller
 
     public function inviteProjectUserMember(Request $request)
     {
-        $authuser = Auth::user();
-
-        // Make entry in project_user tbl
+        $user = Auth::user();
+        $response = AsanaProjectController::inviteProjectMember($request);
+        if ($response->successful()){
         ProjectUser::create(
             [
                 'project_id' => $request->project_id,
                 'user_id' => $request->user_id,
-                'invited_by' => $authuser->id,
+                'invited_by' => $user->id,
             ]
         );
 
         // Make entry in activity_log tbl
         ActivityLog::create(
             [
-                'user_id' => $authuser->id,
+                'user_id' => $user->id,
                 'project_id' => $request->project_id,
                 'log_type' => 'Invite User',
-                'remark' => json_encode(['title' => $authuser->name]),
+                'remark' => json_encode(['title' => $user->name]),
             ]
         );
 
@@ -464,14 +481,14 @@ class ProjectController extends Controller
             ]
         );
     }
-
+    }
 
     public function destroyProjectUser($id, $user_id)
     {
         $project = Project::find($id);
         if ($project->created_by == \Auth::user()->ownerId()) {
             ProjectUser::where('project_id', '=', $project->id)->where('user_id', '=', $user_id)->delete();
-
+            return AsanaProjectController::removeUserFromProject($id,$user_id);
             return redirect()->back()->with('success', __('User successfully deleted!'));
         } else {
             return redirect()->back()->with('error', __('Permission Denied.'));
@@ -628,7 +645,7 @@ class ProjectController extends Controller
             if ($request->ajax() && $request->has('view') && $request->has('sort')) {
 
                 $sort = explode('-', $request->sort);
-                $projects = Project::whereIn('id', array_keys($user_projects))->orderBy($sort[0], $sort[1]);
+                $projects = Project::whereIn('id', array_keys($user_projects))->orderBy('gid','desc');
 
 //                if (!empty($request->keyword)) {
 //                    $projects->where('project_name', 'LIKE', $request->keyword . '%')->orWhereRaw('FIND_IN_SET("' . $request->keyword . '",tags)');

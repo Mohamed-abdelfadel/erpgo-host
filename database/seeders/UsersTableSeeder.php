@@ -4019,10 +4019,128 @@ class UsersTableSeeder extends Seeder
             ['name' => 'delete bug status']
         ];
         $taskerRole->givePermissionTo($taskerPermission);
-        $tasker = User::create(
+        $usersData = [
             [
-                'name' => 'tasker',
-                'email' => 'tasker@example.com',
+                'gid' => '1206237134658753',
+                'name' => 'Mohamed Yasser',
+                'email' => 'my@gorgov.com',
+                'password' => Hash::make('1234'),
+                'type' => 'tasker',
+                'default_pipeline' => 1,
+                'plan' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => 2,
+                'email_verified_at' => now(),
+            ],
+            [
+                'gid' => '1202855676257323',
+                'name' => 'Ahmed Hassan',
+                'email' => 'ah@gorgov.com',
+                'password' => Hash::make('1234'),
+                'type' => 'tasker',
+                'default_pipeline' => 1,
+                'plan' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => 2,
+                'email_verified_at' => now(),
+            ],
+            [
+                'gid' => '1199657603129424',
+                'name' => 'Poula Mina',
+                'email' => 'pm@gorgov.com',
+                'password' => Hash::make('1234'),
+                'type' => 'tasker',
+                'default_pipeline' => 1,
+                'plan' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => 2,
+                'email_verified_at' => now(),
+            ],
+            [
+                'gid' => '1205457053658669',
+                'name' => 'Mohamed Shereen',
+                'email' => 'ms@gorgov.com',
+                'password' => Hash::make('1234'),
+                'type' => 'tasker',
+                'default_pipeline' => 1,
+                'plan' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => 2,
+                'email_verified_at' => now(),
+            ],
+            [
+                'gid' => '1205184575016204',
+                'name' => 'Hassan Nasr',
+                'email' => 'hn@gorgov.com',
+                'password' => Hash::make('1234'),
+                'type' => 'tasker',
+                'default_pipeline' => 1,
+                'plan' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => 2,
+                'email_verified_at' => now(),
+            ],
+            [
+                'gid' => '1201088562814208',
+                'name' => 'Adel Ahmed',
+                'email' => 'aa@gorgov.com',
+                'password' => Hash::make('1234'),
+                'type' => 'tasker',
+                'default_pipeline' => 1,
+                'plan' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => 2,
+                'email_verified_at' => now(),
+            ],
+            [
+                'gid' => '1203460053199375',
+                'name' => 'Mariam Amr',
+                'email' => 'ma@gorgov.com',
+                'password' => Hash::make('1234'),
+                'type' => 'tasker',
+                'default_pipeline' => 1,
+                'plan' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => 2,
+                'email_verified_at' => now(),
+            ],
+            [
+                'gid' => '134523551850876',
+                'name' => 'yasser yehia',
+                'email' => 'yy@gorgov.com',
+                'password' => Hash::make('1234'),
+                'type' => 'tasker',
+                'default_pipeline' => 1,
+                'plan' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => 2,
+                'email_verified_at' => now(),
+            ],
+            [
+                'gid' => '1206237135082847',
+                'name' => 'Abdelrahman Zakaria',
+                'email' => 'az@gorgov.com',
+                'password' => Hash::make('1234'),
+                'type' => 'tasker',
+                'default_pipeline' => 1,
+                'plan' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => 2,
+                'email_verified_at' => now(),
+            ],
+            [
+                'gid' => '1202958295989155',
+                'name' => 'Ahmed Hossam',
+                'email' => 'ahossam@gorgov.com',
                 'password' => Hash::make('1234'),
                 'type' => 'tasker',
                 'default_pipeline' => 1,
@@ -4032,8 +4150,12 @@ class UsersTableSeeder extends Seeder
                 'created_by' => 2,
                 'email_verified_at' => now(),
             ]
-        );
-        $tasker->assignRole($taskerRole);
+        ];
+
+        foreach ($usersData as $userData) {
+            $user = User::create($userData);
+            $user->assignRole($taskerRole);
+        }
 
 
         Utility::employeeDetails($accountant->id, $company->id);

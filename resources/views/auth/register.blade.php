@@ -33,6 +33,15 @@ $logo=\App\Models\Utility::get_file('uploads/logo');
         @csrf
         <div class="">
             <div class="form-group mb-3">
+                <label for="gid" class="form-label">{{__('Asana user ID')}}</label>
+                <input id="gid" type="text" class="form-control @error('gid') is-invalid @enderror" name="gid" value="{{ old('gid') }}" autocomplete="gid" autofocus>
+                @error('gid')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="form-group mb-3">
                 <label for="name" class="form-label">{{__('Name')}}</label>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                 @error('name')

@@ -16,6 +16,7 @@ class CreateProjectTasksTable extends Migration
         if(!Schema::hasTable('project_tasks')){
             Schema::create('project_tasks', function (Blueprint $table) {
                 $table->id();
+                $table->string('gid')->nullable()->unique();
                 $table->string('name');
                 $table->text('description')->nullable();
                 $table->integer('estimated_hrs')->default(0);
@@ -31,6 +32,8 @@ class CreateProjectTasksTable extends Migration
                 $table->integer('created_by')->default(0);
                 $table->integer('is_favourite')->default(0);
                 $table->integer('is_complete')->default(0);
+                $table->date('completed_at')->nullable();
+
                 $table->date('marked_at')->nullable();
                 $table->string('progress', 5)->default(0);
                 $table->timestamps();

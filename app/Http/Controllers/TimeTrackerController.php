@@ -9,6 +9,7 @@ use App\Models\Projects;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Illuminate\Support\Facades\Auth;
 
 class TimeTrackerController extends Controller
 {
@@ -19,8 +20,13 @@ class TimeTrackerController extends Controller
      */
     public function index()
     {
-       $treckers=TimeTracker::where('created_by',\Auth::user()->id)->get();
+        if(Auth::user()->type == 'company'){
+            $treckers=TimeTracker::query()->get();
+        }
+        else{
+            $treckers=TimeTracker::where('created_by',Auth::user()->id)->get();
 
+        }
        return view('time_trackers.index',compact('treckers'));
 
     }
@@ -109,7 +115,7 @@ class TimeTrackerController extends Controller
 
         $tracker = TimeTracker::find($request->id);
 
-        $images = TrackPhoto::where('track_id',$request->id)->where('user_id',\Auth::user()->creatorId())->get();
+        $images = TrackPhoto::where('track_id',$request->id)->where('track_id',$tracker->id)->get();
 //        dd($images);
         // dd($images->toArray());
         // dd($tracker);

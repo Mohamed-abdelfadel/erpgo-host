@@ -14,9 +14,9 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                {{Form::label('asana_user_id',__('Asana user id'),['class'=>'form-label'])}}
-                {{Form::text('asana_user_id',null,array('class'=>'form-control','placeholder'=>__('Enter Asana user id')))}}
-                @error('asana_user_id')
+                {{Form::label('gid',__('Asana user id'),['class'=>'form-label'])}}
+                {{Form::text('gid',null,array('class'=>'form-control','placeholder'=>__('Enter Asana user id')))}}
+                @error('gid')
                 <small class="invalid-password" role="alert">
                     <strong class="text-danger">{{ $message }}</strong>
                 </small>

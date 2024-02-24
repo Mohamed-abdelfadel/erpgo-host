@@ -61,6 +61,7 @@
                                 <th> {{__('Start Time')}}</th>
                                 <th> {{__('End Time')}}</th>
                                 <th>{{__('Total Time')}}</th>
+                                <th>{{__('Created By')}}</th>
                                 <th>{{__('Action')}}</th>
                             </tr>
                             </thead>
@@ -79,6 +80,7 @@
                                     <td>{{date("H:i:s",strtotime($trecker->start_time))}}</td>
                                     <td>{{date("H:i:s",strtotime($trecker->end_time))}}</td>
                                     <td>{{$total_name}}</td>
+                                    <td>{{$trecker->createdBy->name}}</td>
                                     <td>
                                         <img alt="Image placeholder" src="{{ asset('assets/images/gallery.png')}}" class="avatar view-images rounded-circle avatar-sm"
                                              data-bs-toggle="tooltip" title="{{__('View Screenshot images')}}" data-original-title="{{__('View Screenshot images')}}" style="height: 25px;width:24px;margin-right:10px;cursor: pointer;" data-id="{{$trecker->id}}" id="track-images-{{$trecker->id}}">

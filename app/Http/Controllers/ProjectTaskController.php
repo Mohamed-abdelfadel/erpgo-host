@@ -32,27 +32,12 @@ class ProjectTaskController extends Controller
 
     public function index($project_id)
     {
-        $task = Project::query()->find($project_id);
-        $user = Auth::user();
-        $tasks = Http::withToken($this->token)->get("$this->baseUrl/$task->gid/tasks");
-        $tasks = json_decode($tasks);
-        $tasks = $tasks->data;
-        foreach ($tasks as $task) {
-            $existingTask = ProjectTask::where('name', $task->name)->first();
-            if (!$existingTask) {
-            $newTask = new ProjectTask();
-            $newTask->name = $task->name;
-            $newTask->description = "This task imported from asana";
-            $newTask->start_date = now();
-            $newTask->end_date = "2025-01-01";
-            $newTask->priority = "low";
-            $newTask->assign_to = $user->id;
-            $newTask->project_id = $project_id;
-            $newTask->stage_id = 1;
-            $newTask->save();
-        }
-        }
-
+        $project = Project::query()->find($project_id);
+//        return AsanaTaskController::checkTaskSync($project);
+            if (AsanaTaskController::checkTaskSync($project)){
+                AsanaTaskController::syncTasksForProject($project);
+            }
+        AsanaTaskController::getTasksFromAsanaWithProjectGid($project->gid);
         if(\Auth::user()->can('manage project task'))
         {
             $project = Project::where('id', $project_id)->where('created_by', \Auth::user()->creatorId())->first();
@@ -68,7 +53,7 @@ class ProjectTaskController extends Controller
 
                     //end
                     $task->orderBy('order');
-                    $status['tasks'] = $task->where('stage_id', '=', $status->id)->get();
+                    $status['tasks'] = $task->where('stage_id', '=', $status->id)->orderBy('gid','desc')->get();
                 }
 
                 return view('project_task.index', compact('stages', 'stageClass', 'project'));

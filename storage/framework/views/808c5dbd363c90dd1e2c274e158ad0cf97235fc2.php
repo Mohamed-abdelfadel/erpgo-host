@@ -61,6 +61,7 @@
                                 <th> <?php echo e(__('Start Time')); ?></th>
                                 <th> <?php echo e(__('End Time')); ?></th>
                                 <th><?php echo e(__('Total Time')); ?></th>
+                                <th><?php echo e(__('Created By')); ?></th>
                                 <th><?php echo e(__('Action')); ?></th>
                             </tr>
                             </thead>
@@ -79,6 +80,7 @@
                                     <td><?php echo e(date("H:i:s",strtotime($trecker->start_time))); ?></td>
                                     <td><?php echo e(date("H:i:s",strtotime($trecker->end_time))); ?></td>
                                     <td><?php echo e($total_name); ?></td>
+                                    <td><?php echo e($trecker->createdBy->name); ?></td>
                                     <td>
                                         <img alt="Image placeholder" src="<?php echo e(asset('assets/images/gallery.png')); ?>" class="avatar view-images rounded-circle avatar-sm"
                                              data-bs-toggle="tooltip" title="<?php echo e(__('View Screenshot images')); ?>" data-original-title="<?php echo e(__('View Screenshot images')); ?>" style="height: 25px;width:24px;margin-right:10px;cursor: pointer;" data-id="<?php echo e($trecker->id); ?>" id="track-images-<?php echo e($trecker->id); ?>">

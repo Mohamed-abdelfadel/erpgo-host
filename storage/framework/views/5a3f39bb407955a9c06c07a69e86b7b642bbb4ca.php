@@ -187,7 +187,7 @@
                             </div>
                             <div class="col ml-n2">
                                 <span class="text-dark text-sm"><?php echo e(__($activity->log_type)); ?></span>
-                                <a class="d-block h6 text-sm font-weight-light mb-0"><?php echo $activity->getRemark(); ?></a>
+
                                 <small class="d-block"><?php echo e($activity->created_at->diffForHumans()); ?></small>
                             </div>
                         </div>

@@ -46,6 +46,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        return $request;
         //ReCpatcha
         if(env('RECAPTCHA_MODULE') == 'on')
         {
@@ -62,15 +63,16 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
+            'gid' => $request->gid,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-             'type' => 'company',
+             'type' => $request->role,
              'default_pipeline' => 1,
               'plan' => 1,
               'lang' => Utility::getValByName('default_language'),
                'avatar' => '',
-               'created_by' => 1,
+               'created_by' => 2,
         ]);
         Auth::login($user);
 

@@ -49,6 +49,9 @@ class TimeTracker extends Model
 
         return $total ? $total : '00:00:00';
     }
-
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 
 }

@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header border-0 pb-0">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset("storage/projects/$project->project_image	") }}" class="img-fluid wid-30 me-2" alt="">
+                            <img src="{{ asset("storage/projects/$project->project_image") }}" class="img-fluid wid-30 me-2" alt="">
                             <h5 class="mb-0"><a class="text-dark" href="{{ route('projects.show',$project) }}">{{ $project->project_name }}</a></h5>
                         </div>
                         <div class="card-header-right">
@@ -68,7 +68,7 @@
                                 @endforeach
                             @endif
                         </div>
-                        <div class="card mb-0 mt-3">
+                        <div class="card mb-0 mt-3 "  @if($project->completed) style="background-color: #90ee90" @endif>
                             <div class="card-body p-3">
                                 <div class="row">
                                     <div class="col-6">

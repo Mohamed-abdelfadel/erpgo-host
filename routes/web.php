@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AsanaProjectController;
+use App\Http\Controllers\AsanaTaskController;
 use App\Models\Utility;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -144,20 +146,11 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
 
 
-//Route::get('/', ['as' => 'home','uses' =>'HomeController@index'])->middleware(['XSS']);
-//Route::get('/home', ['as' => 'home','uses' =>'HomeController@index'])->middleware(['auth','XSS']);
 
+Route::get('/asana/tasks/sync', [AsanaTaskController::class, 'syncTasks'])->middleware(['XSS', 'revalidate'])->name('asana.sync');
 
 
 Route::get('/register/{lang?}', [RegisteredUserController::class, 'showRegistrationForm'])->name('register');

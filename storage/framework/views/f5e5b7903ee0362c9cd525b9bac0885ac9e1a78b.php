@@ -24,11 +24,11 @@ unset($__errorArgs, $__bag); ?>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <?php echo e(Form::label('asana_user_id',__('Asana user id'),['class'=>'form-label'])); ?>
+                <?php echo e(Form::label('gid',__('Asana user id'),['class'=>'form-label'])); ?>
 
-                <?php echo e(Form::text('asana_user_id',null,array('class'=>'form-control','placeholder'=>__('Enter Asana user id')))); ?>
+                <?php echo e(Form::text('gid',null,array('class'=>'form-control','placeholder'=>__('Enter Asana user id')))); ?>
 
-                <?php $__errorArgs = ['asana_user_id'];
+                <?php $__errorArgs = ['gid'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

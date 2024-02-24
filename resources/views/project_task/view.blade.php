@@ -187,7 +187,7 @@
                             </div>
                             <div class="col ml-n2">
                                 <span class="text-dark text-sm">{{ __($activity->log_type) }}</span>
-                                <a class="d-block h6 text-sm font-weight-light mb-0">{!! $activity->getRemark() !!}</a>
+{{--                                <a class="d-block h6 text-sm font-weight-light mb-0">{!! $activity->getRemark() !!}</a>--}}
                                 <small class="d-block">{{$activity->created_at->diffForHumans()}}</small>
                             </div>
                         </div>
